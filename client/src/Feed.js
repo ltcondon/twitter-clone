@@ -4,10 +4,22 @@ import Post from './Post';
 import Tweetbox from './Tweetbox';
 import { useSelector } from 'react-redux';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { getPosts } from './actions/posts'
+
 
 function Feed() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getPosts())
+  }, [dispatch])
+
   const posts = useSelector((state) => state.posts)
+  const sortedPosts = posts.slice().sort((a, b) => { return new Date(b.createdAt) - new Date(a.createdAt) })
   console.log(posts)
+  console.log('sorted', sortedPosts)
 
   return <div className='feed'>
     <div  className='feed__header'>
@@ -16,10 +28,11 @@ function Feed() {
 
     <Tweetbox />
 
-    <Post />
-    <Post />
-    <Post />
-    <Post />
+    {sortedPosts.map(p => {
+      if (p.user && p.username && p.isVerified) {
+        return <Post postData={p} key={p._id}/>
+      }
+    })}
 
   </div>;
 }

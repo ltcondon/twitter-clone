@@ -1,7 +1,7 @@
 import './Widgets.css';
 import { Search } from '@mui/icons-material';
 import React from 'react';
-import { TwitterTimelineEmbed, TwitterShareButton } from 'react-twitter-embed'
+import { TwitterTimelineEmbed } from 'react-twitter-embed'
 
 function Widgets() {
   return <div className='widgets'>
@@ -17,10 +17,6 @@ function Widgets() {
         sourceType='profile'
         screenName='ChelseaFC'
         options={{ height: 400 }}
-      />
-      <TwitterShareButton
-        url={"https://facebook.com/cleverprogrammer"}
-        options={{ text: "#reactjs is awesome", via: "cleverqazi" }}
       />
     </div>
   </div>;

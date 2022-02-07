@@ -30,12 +30,16 @@ img {
 }
 
 .post__headerText > h3 {
+    display: flex;
+    align-items: center;
     font-size: 15px;
     margin-bottom: 5px;
 }
 
 .post__badge {
     font-size: 14px !important;
+    padding-left: 2px;
+    padding-right: 4px;
     color: var(--twitter-color);
 }
 
@@ -46,7 +50,8 @@ img {
 }
 
 .post__avatar {
-    padding: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
 }
 
 .post__username {

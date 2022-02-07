@@ -4,15 +4,19 @@ import React, { useState } from 'react';
 import FileBase from 'react-file-base64'
 import './Tweetbox.css'
 import { useDispatch } from 'react-redux'
-import { createPost } from './actions/posts';
+import { createPost, getPosts } from './actions/posts';
 
 function Tweetbox() {
-  const [postData, setPostData] = useState({ message: '', tags: '', selectedFile: '' })
+  const user = 'Keem London'
+  const username = 'keemlondon'
+  const [postData, setPostData] = useState({ message: '', tags: '', selectedFile: '', user: user, username: username, isVerified: true })
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
-    dispatch(createPost(postData))
+    e.stopPropagation()
+    dispatch(createPost({...postData, createdAt: new Date().toUTCString()}))
     setPostData({...postData, message: ''})
+    dispatch(getPosts())
   }
 
   return <div className='tweetbox'>
@@ -26,6 +30,7 @@ function Tweetbox() {
           placeholder="What's Happening?" 
           value={postData.message} 
           onChange={(e) => setPostData({...postData, message: e.target.value})}
+          onSubmit={handleSubmit}
         />
 
         {/* <div>
