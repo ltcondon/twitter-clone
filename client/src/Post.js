@@ -13,7 +13,7 @@ function Post({
 }) {
   return <div className='post'>
       <div className='post__avatar'>
-          <Avatar src='https://avatars.githubusercontent.com/u/35811826?v=4'/>
+          <Avatar className='avatar' src='https://avatars.githubusercontent.com/u/35811826?v=4'/>
       </div>
       <div className='post__body'>
         <div className='post__header'>
@@ -26,7 +26,7 @@ function Post({
                 <p>This is gonna work at some point I swear</p>
             </div>
         </div>
-        <img src="https://pbs.twimg.com/media/FK3h7iQWYAMZjJC?format=jpg&name=medium"/>
+        <img src="https://pbs.twimg.com/media/FK3h7iQWYAMZjJC?format=jpg&name=medium" alt=''/>
         <div className='post__footer'>
             <ChatBubbleOutline fontSize='small'/>
             <Repeat fontSize='small'/>

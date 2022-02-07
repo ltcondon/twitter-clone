@@ -1,7 +1,7 @@
 .tweetbox {
     padding-right: 10px;
     padding-bottom: 10px;
-    border-bottom: 8px solid var(--twitter-background);
+    border-bottom: 1px solid var(--twitter-background);
 }
 
 .tweetbox > form {
@@ -11,6 +11,7 @@
 
 .tweetbox__input {
     padding: 20px;
+    align-items: center;
     display: flex;
 }
 
@@ -48,4 +49,10 @@
 
 .MuiSvgIcon-fontSizeSmall {
     padding: 20px;
+}
+
+.avatar {
+    margin-right: 20px;
+    width: 60px !important;
+    height: 60px !important;
 }
