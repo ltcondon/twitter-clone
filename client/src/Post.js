@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { likePost, retweetPost } from './actions/posts';
+import { createPost, likePost, retweetPost } from './actions/posts';
 
 import { ChatBubbleOutline, FavoriteBorderOutlined, Repeat, Verified } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
@@ -24,6 +24,9 @@ function Post(props) {
         console.log(event, data);
         if (data.retweet) {
             dispatch(retweetPost(post._id))
+            let postToRetweet = {...post, createdAt: new Date().toUTCString(), isRetweet: true}
+            delete postToRetweet._id
+            dispatch(createPost(postToRetweet))
             setRetweetData({ ...retweetData, retweetCount: post.retweetCount ? post.retweetCount += 1 : 1})
         }
         setIsOpen(false);
@@ -46,7 +49,9 @@ function Post(props) {
         }
     }
 
-    return <div className={props.isRetweet ? 'retweet' : 'post'}>
+    return <div>
+      <div hidden={!post.isRetweet} className='post__retweet'><Repeat fontSize='small' color='grey'/>{`  @${post.user} Retweeted`}</div>
+    <div className={props.isRetweet ? 'retweet' : 'post'}>
       <div className='post__avatar'>
           <Avatar className='avatar' src='https://avatars.githubusercontent.com/u/35811826?v=4'/>
       </div>
@@ -80,7 +85,8 @@ function Post(props) {
         IsModalOpened={modalIsOpen}
         onCloseModal={handleCloseModal}
         onAfterOpen={handleAfterOpen} />
-  </div>;
+  </div>
+  </div>
 }
 
 export default Post;

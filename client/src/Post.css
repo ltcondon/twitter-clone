@@ -1,4 +1,6 @@
-
+[hidden] {
+    display: none !important;
+}
 .retweet {
     display: flex;
     align-items: flex-start;
@@ -92,4 +94,12 @@
     display: flex;
     font-family: 'PT Sans';
     align-items: center;
+}
+
+.post__retweet {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: grey;
+    padding: 10px;
 }
