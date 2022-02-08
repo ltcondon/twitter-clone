@@ -8,7 +8,15 @@ const postSchema = mongoose.Schema({
   isVerified: Boolean,
   tags: [String],
   selectedFile: String,
+  isRetweet: {
+    type: Boolean,
+    default: false
+  },
   likeCount: {
+    type: Number,
+    default: 0
+  },
+  retweetCount: {
     type: Number,
     default: 0
   },

@@ -27,3 +27,12 @@ export const likePost = (id) => async (dispatch) => {
         console.log(error.message)
     }
 }
+
+export const retweetPost = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.retweetPost(id)
+        dispatch({ type: 'RETWEET', payload: data })
+    } catch (error) {
+        console.log(error.message)
+    }
+}

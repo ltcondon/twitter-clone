@@ -52,6 +52,12 @@
     height: 60px !important;
 }
 
+.tweetbox__widget {
+    display: flex;
+    padding: 0px 20px;
+    align-items: center;
+}
+
 .tweetbox__widget:hover {
     color: var(--twitter-color);
     cursor: pointer;

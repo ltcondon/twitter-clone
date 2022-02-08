@@ -1,0 +1,31 @@
+.retweet__tweetButton {
+    display: flex; /* maybe? */
+    background-color: var(--twitter-color) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    height: 50px !important;
+    width: 80px;
+    margin: 20px
+}
+
+.retweet__cancelButton {
+    display: flex; /* maybe? */
+    background-color: var(--twitter-background) !important;
+    border: none !important;
+    color: var(--twitter-color);
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    height: 50px !important;
+    width: 80px;
+    margin: 20px
+}
+
+.retweet__buttonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

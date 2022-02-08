@@ -8,6 +8,7 @@ const reducer = (posts = [], action) => {
             return [...posts, action.payload]
         case 'UPDATE':
         case 'LIKE':
+        case 'RETWEET':
             return posts.map((post => post.id === action.payload._id ? action.payload : post))
         default:
             return posts
