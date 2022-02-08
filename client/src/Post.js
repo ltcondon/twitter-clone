@@ -1,11 +1,21 @@
 import { ChatBubbleOutline, FavoriteBorderOutlined, Repeat, Verified } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { likePost } from './actions/posts';
 import './Post.css'
 
+
 function Post(props) {
-  const post = props.postData
-  return <div className='post'>
+    const dispatch = useDispatch()
+    const handleLike = (e) => {
+        dispatch(likePost(post._id))
+        setPostData({ ...postData, likeCount: post.likeCount += 1})
+    }
+    const post = props.postData
+    const [postData, setPostData] = useState({ likeCount: post.likeCount })
+
+    return <div className='post'>
       <div className='post__avatar'>
           <Avatar className='avatar' src='https://avatars.githubusercontent.com/u/35811826?v=4'/>
       </div>
@@ -22,10 +32,13 @@ function Post(props) {
         </div>
         <img src="https://pbs.twimg.com/media/FK3h7iQWYAMZjJC?format=jpg&name=medium" alt=''/>
         <div className='post__footer'>
-            <ChatBubbleOutline fontSize='small'/>
-            <Repeat fontSize='small'/>
-            <FavoriteBorderOutlined fontSize='small'/>
-            <ChatBubbleOutline fontSize='small'/>
+            <ChatBubbleOutline fontSize='small' className='post__widget'/>
+            <Repeat fontSize='small' className='post__widget'/>
+            <div className='post__widgetRow post__widget' onClick={handleLike}>
+                <FavoriteBorderOutlined fontSize='small'/>
+                <span className='post__likeCount'>{post.likeCount}</span>
+            </div>
+            <ChatBubbleOutline fontSize='small' className='post__widget'/>
         </div>
       </div>
   </div>;
